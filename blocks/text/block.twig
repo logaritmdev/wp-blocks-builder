@@ -1,0 +1,16 @@
+<div {{wpbb_render_block_attr(block, 'block-text')}}>
+	<div class="container">
+		<div class="block-text-area-wrapper">
+			{% if block.get_field('title') %}
+				<div class="block-text-area-title">
+					<h2>{{block.get_field('title')}}</h2>
+				</div>
+			{% endif %}
+			{% if block.get_field('content') %}
+				<div class="block-text-area-content">
+					{{block.get_field('content')}}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>

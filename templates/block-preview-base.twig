@@ -1,0 +1,44 @@
+<li class="block {% if disable %} disable {% endif %}"  data-stack-id="{{stack_id}}" data-stack-url="{{stack_url}}" data-block-id="{{block_id}}" data-block-buid="{{block_buid}}" data-block-name="{{block_name}}">
+
+	<input type="hidden" name="_wpbb_blocks[]" value="{{block_id}}">
+	<input type="hidden" name="_wpbb_blocks_super_id[]" value="{{super_id}}">
+	<input type="hidden" name="_wpbb_blocks_space_id[]" value="{{space_id}}">
+
+	<div class="block-bar clearfix">
+		<div class="block-name">{{block_name}}</div>
+		<div class="block-actions">
+			{% if not disable %}
+				<div class="block-remove">
+					<a href="#delete" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Remove</a>
+				</div>
+				<div class="block-copy">
+					<a href="#copy" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Copy</a>
+				</div>
+				<div class="block-move">
+					<a href="#move" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Move</a>
+				</div>
+				<div class="block-edit">
+					<a href="{{function('admin_url', 'post.php?&post=' ~ block_id ~ '&action=edit&stack_id=' ~ stack_id)}}" class="button button-edit-block">Edit</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if header %}
+		<div class="block-content-preview-header">{{header}}</div>
+	{% endif %}
+
+	<div class="block-content">
+		<div class="block-content-loading">
+			<span class="spinner"></span>
+		</div>
+		<div class="block-content-preview">
+			{% block preview %}{% endblock %}
+		</div>
+	</div>
+
+	{% if footer %}
+		<div class="block-content-preview-footer">{{footer}}</div>
+	{% endif %}
+
+</li>

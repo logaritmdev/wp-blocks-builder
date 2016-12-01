@@ -1,0 +1,119 @@
+<input type="hidden" name="_wpbb_blocks_changed" value="false">
+
+<ul class="blocks blocks-root">
+	{% for block in blocks %}
+		{% if block.super_id == "" or block.super_id == "0" or block.super_id == "-1" %}
+			{{wpbb_render_block_preview(block.buid, block.block_id, block.stack_id)}}
+		{% endif %}
+	{% endfor %}
+</ul>
+
+<div id="wpbb-primary-add-block" class="button block-add-button">Add block</div>
+
+<!-- Copy Block Modal -->
+
+<div id="wpbb-copy-modal" class="block-metabox-modal">
+	<div class="block-metabox-modal-frame">
+		<div class="block-metabox-modal-header">
+			<h1>Copy Block</h1>
+			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">Close</span>
+				</span>
+			</button>
+		</div>
+		<div class="block-metabox-modal-content">
+			<h2>Select the page to copy this block to:</h2>
+			<ul class="block-metabox-pages">
+				{{pages}}
+			</ul>
+		</div>
+		<div class="block-metabox-pages-action">
+			<div class="button button-primary button-large">Copy</div><span class="spinner"></span>
+		</div>
+	</div>
+</div>
+
+<!-- Move Block Modal -->
+
+<div id="wpbb-move-modal" class="block-metabox-modal">
+	<div class="block-metabox-modal-frame">
+		<div class="block-metabox-modal-header">
+			<h1>Move Block</h1>
+			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">Close</span>
+				</span>
+			</button>
+		</div>
+		<div class="block-metabox-modal-content">
+			<h2>Select the page to move this block to:</h2>
+			<ul class="block-metabox-pages">
+				{{pages}}
+			</ul>
+		</div>
+		<div class="block-metabox-pages-action">
+			<div class="button button-primary button-large">Move</div><span class="spinner"></span>
+		</div>
+	</div>
+</div>
+
+<!-- Edit Block Modal -->
+
+<div id="wpbb-edit-modal" class="block-metabox-modal">
+	<div class="block-metabox-modal-frame">
+		<div class="block-metabox-modal-header">
+			<h1>Edit Block</h1>
+			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">Close media panel</span>
+				</span>
+			</button>
+		</div>
+		<div class="block-metabox-modal-content">
+			<iframe width="100%" height="100%" allowtransparency="true"></iframe>
+		</div>
+	</div>
+</div>
+
+<!-- Add Block Modal -->
+
+<div id="wpbb-add-modal" class="block-metabox-modal">
+	<div class="block-metabox-modal-frame">
+		<div class="block-metabox-modal-header">
+			<h1>Insert Block</h1>
+			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
+				<span class="media-modal-icon">
+					<span class="screen-reader-text">Close</span>
+				</span>
+			</button>
+		</div>
+		<div class="block-metabox-modal-content">
+			<div class="block-template-info-list">
+				{% for category_name, block_types in categories %}
+					<div class="block-template-info-category clearfix">
+						<div class="block-template-info-category-name">{{category_name}}</div>
+						{% for block_template_info in block_types %}
+							<div class="block-template-info-cell">
+								<div class="block-template-info" data-buid="{{block_template_info.buid}}">
+									<div class="block-template-info-header">
+										<div class="block-template-info-name">{{block_template_info.name}}</div>
+										<div class="block-template-info-desc">{{block_template_info.description}}</div>
+									</div>
+									<div class="block-template-info-layout">
+										<div class="block-template-info-layout-frame">
+											{{function('wpbb_render_block_outline', block_template_info.buid)}}
+										</div>
+									</div>
+									<div class="block-template-info-action">
+										<div class="button button-primary block-insert-button">Insert</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

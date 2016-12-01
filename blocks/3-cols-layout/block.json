@@ -1,0 +1,10 @@
+{
+	"name": "3 Columns Layout",
+	"description": "Layout with two side columns and a content area.",
+	"outline_file": "outline.twig",
+	"preview_file": "preview.twig",
+	"template_file": "block.twig",
+	"class_file": "block.php",
+	"class_name": "Layout3Cols",
+	"category": "Layout"
+}

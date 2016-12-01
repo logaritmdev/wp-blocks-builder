@@ -1,0 +1,9 @@
+{
+	"name": "Block Template",
+	"description": "Lorem ipsum dolor sit amet, sea te wisi pertinacia, mei graeci expetendis an, pro porro mediocrem gloriatur ad.",
+	"outline_file": "outline.twig",
+	"preview_file": "preview.twig",
+	"template_file": "block.twig",
+	"class_file": "block.php",
+	"class_name": "Namespace\\Block"
+}

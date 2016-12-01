@@ -1,0 +1,8 @@
+{% extends "block-preview-base.twig" %}
+{% block preview %}
+	<div class="row">
+		<div class="col-md-2">{{wpbb_render_block_space('side_column_lf')}}</div>
+		<div class="col-md-8">{{wpbb_render_block_space('main_column')}}</div>
+		<div class="col-md-2">{{wpbb_render_block_space('side_column_rg')}}</div>
+	</div>
+{% endblock %}

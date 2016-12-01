@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Admin
+   ========================================================================== */
+
+html.wp-toolbar {
+	padding-top: 0px !important;
+}
+
+html,
+body {
+	background: transparent;
+}
+
+body {
+	display: none;
+}
+
+body.loaded {
+	display: block;
+	background: #f1f1f1;
+}
+
+#adminmenumain {
+	display: none !important;
+}
+
+#wpadminbar {
+	display: none !important;
+}
+
+#screen-meta,
+#screen-meta-links {
+	display: none !important;
+}
+
+#update-nag, .update-nag {
+	display: none !important;
+}
+
+#wpheader,
+#wpfooter,
+#wpcontent {
+	margin-left: 0px !important;
+}
+
+#wpfooter {
+	display: none !important;
+}
+
+#message {
+	display: none !important;
+}
+
+#post-body-content {
+	display: none !important;
+}
+
+#poststuff {
+	margin-top: 0px;
+}
+
+#poststuff .postbox-container {
+	float: none !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	width: auto !important;
+}
+
+#poststuff #post-body {
+	margin: 0px !important;
+}
+
+#postbox-container-1 {
+	display: none !important;
+}
+
+#submitdiv {
+	box-shadow: none;
+	margin-bottom: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	position: fixed;
+}
+
+#submitdiv h2,
+#submitdiv h3,
+#submitdiv .handlediv,
+#submitdiv #minor-publishing {
+	display: none;
+}
+
+#submitdiv #major-publishing-actions {
+	border: none;
+	background: #fff;
+}
+
+#delete-action {
+	display: none;
+}
+
+h1 {
+	display: none;
+}

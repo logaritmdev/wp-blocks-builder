@@ -1,0 +1,8 @@
+{% extends "block-preview-base.twig" %}
+
+{% block preview %}
+	<div class="clearfix">
+		<h3>{{block.get_field('title')}}</h3>
+		{{block.get_field('content')}}
+	</div>
+{% endblock %}
