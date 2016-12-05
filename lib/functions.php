@@ -239,9 +239,9 @@ function wpbb_render_block_attr($post, $base, $classes = array()) {
 	}
 
 	$more = array_unique($more);
-	$mode = implode(' ', $mode);
+	$more = implode(' ', $more);
 
-	return strtr('id="{id}" class="{base} {more}"', array('{id}' => $post->ID, '{base}' => $base, '{more}' => $more));
+	return strtr('id="post-{id}" class="{base} {more}"', array('{id}' => $post->ID, '{base}' => $base, '{more}' => $more));
 }
 
 /**
