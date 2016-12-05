@@ -202,14 +202,14 @@ console.log('WAT 1')
 
 	$('#wpbb-move-modal').wpbb_modal({
 		onHide: function() {
-			$('#wpbb-move-modal .block-metabox-pages li a.selected').removeClass('selected')
+			$('#wpbb-move-modal .block-metabox-targets li a.selected').removeClass('selected')
 			$('#wpbb-move-modal').removeClass('wpbb-processing')
 		}
 	})
 
 	$('#wpbb-copy-modal').wpbb_modal({
 		onHide: function() {
-			$('#wpbb-copy-modal .block-metabox-pages li a.selected').removeClass('selected')
+			$('#wpbb-copy-modal .block-metabox-targets li a.selected').removeClass('selected')
 			$('#wpbb-copy-modal').removeClass('wpbb-processing')
 		}
 	})
@@ -290,7 +290,7 @@ console.log('WAT 1')
 
 		var selected = null
 
-		$(id + ' .block-metabox-pages').on('click', 'a', function(e) {
+		$(id + ' .block-metabox-targets').on('click', 'a', function(e) {
 
 			e.preventDefault()
 
@@ -308,7 +308,7 @@ console.log('WAT 1')
 
 		var sourceBlockId = $('#wpbb-move-modal').attr('data-source-block-id')
 		var sourceStackId = $('#wpbb-move-modal').attr('data-source-stack-id')
-		var targetStackId = $('#wpbb-move-modal .block-metabox-pages li a.selected').closest('li').attr('data-stack-id');
+		var targetStackId = $('#wpbb-move-modal .block-metabox-targets li a.selected').closest('li').attr('data-stack-id');
 
 		if (targetStackId == null) {
 			return
@@ -332,7 +332,7 @@ console.log('WAT 1')
 
 		var sourceBlockId = $('#wpbb-copy-modal').attr('data-source-block-id')
 		var sourceStackId = $('#wpbb-copy-modal').attr('data-source-stack-id')
-		var targetStackId = $('#wpbb-copy-modal .block-metabox-pages li a.selected').closest('li').attr('data-stack-id');
+		var targetStackId = $('#wpbb-copy-modal .block-metabox-targets li a.selected').closest('li').attr('data-stack-id');
 
 		if (targetStackId == null) {
 			return

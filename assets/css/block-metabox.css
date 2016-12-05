@@ -552,19 +552,19 @@
 	padding-right: 0px;
 }
 
-#wpbb-copy-modal .block-metabox-pages {
+#wpbb-copy-modal .block-metabox-targets {
 	margin: 0px;
 	margin-top: 10px;
 	padding: 0px;
 }
 
-#wpbb-copy-modal .block-metabox-pages li,
-#wpbb-move-modal .block-metabox-pages li {
+#wpbb-copy-modal .block-metabox-targets li,
+#wpbb-move-modal .block-metabox-targets li {
 	margin: 0px;
 }
 
-#wpbb-copy-modal .block-metabox-pages li a,
-#wpbb-move-modal .block-metabox-pages li a {
+#wpbb-copy-modal .block-metabox-targets li a,
+#wpbb-move-modal .block-metabox-targets li a {
 	border-top: 1px solid #dedede;
 	display: block;
 	margin: 0px;
@@ -572,20 +572,20 @@
 	text-decoration: none;
 }
 
-#wpbb-copy-modal .block-metabox-pages li a:focus,
-#wpbb-move-modal .block-metabox-pages li a:focus {
+#wpbb-copy-modal .block-metabox-targets li a:focus,
+#wpbb-move-modal .block-metabox-targets li a:focus {
 	outline: none;
 	box-shadow: none;
 	color: #0073aa;
 }
 
-#wpbb-copy-modal .block-metabox-pages li a.selected,
-#wpbb-move-modal .block-metabox-pages li a.selected {
+#wpbb-copy-modal .block-metabox-targets li a.selected,
+#wpbb-move-modal .block-metabox-targets li a.selected {
 	background: #f3fafd;
 }
 
-#wpbb-copy-modal .block-metabox-pages li a.selected:before,
-#wpbb-move-modal .block-metabox-pages li a.selected:before {
+#wpbb-copy-modal .block-metabox-targets li a.selected:before,
+#wpbb-move-modal .block-metabox-targets li a.selected:before {
 	content: "\f147";
     display: inline-block;
     font: normal 20px/1 dashicons;
@@ -595,23 +595,23 @@
     speak: none;
 }
 
-#wpbb-copy-modal .block-metabox-pages li > ul > li > a,
-#wpbb-move-modal .block-metabox-pages li > ul > li > a {
+#wpbb-copy-modal .block-metabox-targets li > ul > li > a,
+#wpbb-move-modal .block-metabox-targets li > ul > li > a {
 	padding-left: 30px;
 }
 
-#wpbb-copy-modal .block-metabox-pages li > ul > li > ul > li > a,
-#wpbb-move-modal .block-metabox-pages li > ul > li > ul > li > a {
+#wpbb-copy-modal .block-metabox-targets li > ul > li > ul > li > a,
+#wpbb-move-modal .block-metabox-targets li > ul > li > ul > li > a {
 	padding-left: 45px;
 }
 
-#wpbb-copy-modal .block-metabox-pages li > ul > li > ul > li > ul > li a,
-#wpbb-move-modal .block-metabox-pages li > ul > li > ul > li > ul > li a {
+#wpbb-copy-modal .block-metabox-targets li > ul > li > ul > li > ul > li a,
+#wpbb-move-modal .block-metabox-targets li > ul > li > ul > li > ul > li a {
 	padding-left: 60px;
 }
 
-#wpbb-copy-modal .block-metabox-pages-action,
-#wpbb-move-modal .block-metabox-pages-action {
+#wpbb-copy-modal .block-metabox-targets-action,
+#wpbb-move-modal .block-metabox-targets-action {
 	border-top: 1px solid #dedede;
 	height: 45px;
 	bottom: 0px;
@@ -622,26 +622,26 @@
 	right: 0px;
 }
 
-#wpbb-copy-modal .block-metabox-pages-action .spinner,
-#wpbb-move-modal .block-metabox-pages-action .spinner {
+#wpbb-copy-modal .block-metabox-targets-action .spinner,
+#wpbb-move-modal .block-metabox-targets-action .spinner {
 	float: right;
 	margin-top: 13px;
 }
 
-#wpbb-copy-modal.wpbb-processing .block-metabox-pages-action .spinner,
-#wpbb-move-modal.wpbb-processing .block-metabox-pages-action .spinner {
+#wpbb-copy-modal.wpbb-processing .block-metabox-targets-action .spinner,
+#wpbb-move-modal.wpbb-processing .block-metabox-targets-action .spinner {
 	visibility: visible;
 }
 
-#wpbb-copy-modal .block-metabox-pages-action .button,
-#wpbb-move-modal .block-metabox-pages-action .button {
+#wpbb-copy-modal .block-metabox-targets-action .button,
+#wpbb-move-modal .block-metabox-targets-action .button {
 	float: right;
 	margin-top: 7px;
 	margin-bottom: 7px;
 }
 
-#wpbb-copy-modal.wpbb-processing .block-metabox-pages-action .button,
-#wpbb-move-modal.wpbb-processing .block-metabox-pages-action .button {
+#wpbb-copy-modal.wpbb-processing .block-metabox-targets-action .button,
+#wpbb-move-modal.wpbb-processing .block-metabox-targets-action .button {
 	opacity: 0.5;
 	pointer-events: none;
 }

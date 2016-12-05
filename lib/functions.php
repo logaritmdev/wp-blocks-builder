@@ -232,16 +232,11 @@ function wpbb_render_block_attr($post, $base, $classes = array()) {
 
 	$more = [];
 
-	foreach ($classes as $class => $value) {
-		if ($value) {
-			$more[] = $class;
-		}
+	foreach ($classes as $class => $value) if ($value) {
+		$more[] = $class;
 	}
 
-	$more = array_unique($more);
-	$more = implode(' ', $more);
-
-	return strtr('id="post-{id}" class="{base} {more}"', array('{id}' => $post->ID, '{base}' => $base, '{more}' => $more));
+	return strtr('id="post-{id}" class="{base} {more}"', array('{id}' => $post->ID, '{base}' => $base, '{more}' => implode(' ', array_unique($more))));
 }
 
 /**

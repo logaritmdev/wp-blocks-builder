@@ -141,15 +141,27 @@ add_action('admin_init', function() {
 
 			ksort($categories);
 
-			$pages = wp_list_pages(array(
-				'title_li' => '',
-				'echo' => false,
-				'walker' => new WPB_Walker_Page()
+			$items = get_posts(array(
+				'posts_per_page'   => -1,
+				'offset'           => 0,
+				'post_type'        => get_post_type(),
+				'post_status'      => 'any',
+				'suppress_filters' => true 
 			));
 
+			$targets = '';
+
+			foreach ($items as $item) {
+				$targets .= sprintf(
+					'<li data-stack-id="%s"><a href="#">%s</a></a></li>',
+					$item->ID,
+					$item->post_title
+				);
+			}
+
 			$data = Timber::get_context();
-			$data['pages'] = $pages;
 			$data['blocks'] = $blocks;
+			$data['targets'] = $targets;
 			$data['categories'] = $categories;
 			$data['block_types'] = $block_types;
 			$data['block_paths'] = $block_paths;
