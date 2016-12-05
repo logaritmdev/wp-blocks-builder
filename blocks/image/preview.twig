@@ -1,7 +1,0 @@
-{% extends "block-preview-base.twig" %}
-
-{% block preview %}
-	<div class="clearfix">
-		<img src="{{block.get_field('image').src|resize(640,480)}}" />
-	</div>
-{% endblock %}
