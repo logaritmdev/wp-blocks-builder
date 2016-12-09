@@ -1,0 +1,160 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Blocks Builder\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2016-12-09 12:20-0500\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jean-Philippe Déry <jean-philippe.dery@logaritm.ca>\n"
+"Language-Team: Logaritm <jean-philippe.dery@logaritm.ca>\n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/page-walker.php:136
+#, php-format
+msgid "#%d (no title)"
+msgstr "#%d (sans titre)"
+
+#: wp-blocks-builder.php:29
+msgctxt "post type general name"
+msgid "Page Blocks"
+msgstr "Bloques de page"
+
+#: wp-blocks-builder.php:30
+msgctxt "post type singular name"
+msgid "Page Block"
+msgstr "Bloque de page"
+
+#: wp-blocks-builder.php:31
+msgctxt "admin menu"
+msgid "Page Blocks"
+msgstr "Bloques de page"
+
+#: wp-blocks-builder.php:32
+msgctxt "add new on admin bar"
+msgid "Page Block"
+msgstr "Bloque de page"
+
+#: wp-blocks-builder.php:33
+msgctxt "Block"
+msgid "Add New"
+msgstr "Ajouter"
+
+#: wp-blocks-builder.php:34
+msgid "Add New Page Block"
+msgstr "Ajouter un nouveau bloque de page"
+
+#: wp-blocks-builder.php:35
+msgid "New Page Block"
+msgstr "Nouveau bloque de page"
+
+#: wp-blocks-builder.php:36
+msgid "Edit Page Block"
+msgstr "Modifier un bloque de page"
+
+#: wp-blocks-builder.php:37
+msgid "View Page Block"
+msgstr "Voir le bloque de page"
+
+#: wp-blocks-builder.php:38
+msgid "All Page Blocks"
+msgstr "Tous les bloques de page"
+
+#: wp-blocks-builder.php:39
+msgid "Search Page Blocks"
+msgstr "Rechercher un bloque de page"
+
+#: wp-blocks-builder.php:40
+msgid "Parent Page Blocks:"
+msgstr "Bloque de page parent"
+
+#: wp-blocks-builder.php:41
+msgid "No page blocks found."
+msgstr "Pas de bloque de page trouvé"
+
+#: wp-blocks-builder.php:42
+msgid "No page block found in Trash."
+msgstr "Pas de bloque de page trouvé dans la corbeille."
+
+#: wp-blocks-builder.php:117
+msgid "The post editor has been disabled because this page contains blocks."
+msgstr "L’éditeur a été désactivé car cette page est formée de bloques."
+
+#: wp-blocks-builder.php:123
+msgid "Blocks"
+msgstr "Bloques"
+
+#: wp-blocks-builder.php:256 wp-blocks-builder.php:269
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: templates/block-metabox.twig:11
+msgid "Add block"
+msgstr "Ajouter un bloque"
+
+#: templates/block-metabox.twig:18
+msgid "Copy Block"
+msgstr "Copier un bloque"
+
+#: templates/block-metabox.twig:21 templates/block-metabox.twig:45
+#: templates/block-metabox.twig:87
+msgid "Close"
+msgstr "Fermer"
+
+#: templates/block-metabox.twig:26
+msgid "Select the target to copy this block to:"
+msgstr "Sélectionner la destination pour copier le bloque:"
+
+#: templates/block-metabox.twig:32 templates/block-preview-base.twig:15
+msgid "Copy"
+msgstr "Copier"
+
+#: templates/block-metabox.twig:42
+msgid "Move Block"
+msgstr "Déplacer le bloque"
+
+#: templates/block-metabox.twig:50
+msgid "Select the target to move this block to:"
+msgstr "Sélectionner la destination pour déplacer le bloque:"
+
+#: templates/block-metabox.twig:56 templates/block-preview-base.twig:18
+msgid "Move"
+msgstr "Déplacer"
+
+#: templates/block-metabox.twig:66
+msgid "Edit Block"
+msgstr "Modifier le bloque"
+
+#: templates/block-metabox.twig:69
+msgid "Close media panel"
+msgstr "Fermer le panneau média"
+
+#: templates/block-metabox.twig:84
+msgid "Insert Block"
+msgstr "Insérer un bloque"
+
+#: templates/block-metabox.twig:109
+msgid "Insert"
+msgstr "Insérer"
+
+#: templates/block-preview-base.twig:12
+msgid "Remove"
+msgstr "Supprimer"
+
+#: templates/block-preview-base.twig:21
+msgid "Edit"
+msgstr "Modifier"

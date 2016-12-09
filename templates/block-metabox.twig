@@ -8,28 +8,28 @@
 	{% endfor %}
 </ul>
 
-<div id="wpbb-primary-add-block" class="button block-add-button">Add block</div>
+<div id="wpbb-primary-add-block" class="button block-add-button">{{ __('Add block', 'wp-blocks-builder') }}</div>
 
 <!-- Copy Block Modal -->
 
 <div id="wpbb-copy-modal" class="block-metabox-modal">
 	<div class="block-metabox-modal-frame">
 		<div class="block-metabox-modal-header">
-			<h1>Copy Block</h1>
+			<h1>{{ __('Copy Block', 'wp-blocks-builder') }}</h1>
 			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close</span>
+					<span class="screen-reader-text">{{ __('Close', 'wp-blocks-builder') }}</span>
 				</span>
 			</button>
 		</div>
 		<div class="block-metabox-modal-content">
-			<h2>Select the target to copy this block to:</h2>
+			<h2>{{ __('Select the target to copy this block to:', 'wp-blocks-builder') }}</h2>
 			<ul class="block-metabox-targets">
-				{{targets}}
+				{{ targets }}
 			</ul>
 		</div>
 		<div class="block-metabox-targets-action">
-			<div class="button button-primary button-large">Copy</div><span class="spinner"></span>
+			<div class="button button-primary button-large">{{ __('Copy', 'wp-blocks-builder') }}</div><span class="spinner"></span>
 		</div>
 	</div>
 </div>
@@ -39,21 +39,21 @@
 <div id="wpbb-move-modal" class="block-metabox-modal">
 	<div class="block-metabox-modal-frame">
 		<div class="block-metabox-modal-header">
-			<h1>Move Block</h1>
+			<h1>{{ __('Move Block', 'wp-blocks-builder') }}</h1>
 			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close</span>
+					<span class="screen-reader-text">{{ __('Close', 'wp-blocks-builder') }}</span>
 				</span>
 			</button>
 		</div>
 		<div class="block-metabox-modal-content">
-			<h2>Select the target to move this block to:</h2>
+			<h2>{{ __('Select the target to move this block to:', 'wp-blocks-builder') }}</h2>
 			<ul class="block-metabox-targets">
 				{{targets}}
 			</ul>
 		</div>
 		<div class="block-metabox-targets-action">
-			<div class="button button-primary button-large">Move</div><span class="spinner"></span>
+			<div class="button button-primary button-large">{{ __('Move', 'wp-blocks-builder') }}</div><span class="spinner"></span>
 		</div>
 	</div>
 </div>
@@ -63,10 +63,10 @@
 <div id="wpbb-edit-modal" class="block-metabox-modal">
 	<div class="block-metabox-modal-frame">
 		<div class="block-metabox-modal-header">
-			<h1>Edit Block</h1>
+			<h1>{{ __('Edit Block', 'wp-blocks-builder') }}</h1>
 			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close media panel</span>
+					<span class="screen-reader-text">{{ __('Close media panel', 'wp-blocks-builder') }}</span>
 				</span>
 			</button>
 		</div>
@@ -81,10 +81,10 @@
 <div id="wpbb-add-modal" class="block-metabox-modal">
 	<div class="block-metabox-modal-frame">
 		<div class="block-metabox-modal-header">
-			<h1>Insert Block</h1>
+			<h1>{{ __('Insert Block', 'wp-blocks-builder') }}</h1>
 			<button type="button" class="button-link media-modal-close block-metabox-modal-hide">
 				<span class="media-modal-icon">
-					<span class="screen-reader-text">Close</span>
+					<span class="screen-reader-text">{{ __('Close', 'wp-blocks-builder') }}</span>
 				</span>
 			</button>
 		</div>
@@ -106,7 +106,7 @@
 										</div>
 									</div>
 									<div class="block-template-info-action">
-										<div class="button button-primary block-insert-button">Insert</div>
+										<div class="button button-primary block-insert-button">{{ __('Insert', 'wp-blocks-builder') }}</div>
 									</div>
 								</div>
 							</div>

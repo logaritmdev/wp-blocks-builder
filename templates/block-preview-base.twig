@@ -9,16 +9,16 @@
 		<div class="block-actions">
 			{% if not disable %}
 				<div class="block-remove">
-					<a href="#delete" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Remove</a>
+					<a href="#delete" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">{{ __('Remove', 'wp-blocks-builder') }}</a>
 				</div>
 				<div class="block-copy">
-					<a href="#copy" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Copy</a>
+					<a href="#copy" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">{{ __('Copy', 'wp-blocks-builder') }}</a>
 				</div>
 				<div class="block-move">
-					<a href="#move" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">Move</a>
+					<a href="#move" data-block-id="{{block_id}}" data-stack-id="{{stack_id}}">{{ __('Move', 'wp-blocks-builder') }}</a>
 				</div>
 				<div class="block-edit">
-					<a href="{{function('admin_url', 'post.php?&post=' ~ block_id ~ '&action=edit&stack_id=' ~ stack_id)}}" class="button button-edit-block">Edit</a>
+					<a href="{{function('admin_url', 'post.php?&post=' ~ block_id ~ '&action=edit&stack_id=' ~ stack_id)}}" class="button button-edit-block">{{ __('Edit', 'wp-blocks-builder') }}</a>
 				</div>
 			{% endif %}
 		</div>

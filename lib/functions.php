@@ -13,13 +13,7 @@ $_block_types_cache = null;
  */
 function wpbb_json($file)
 {
-	$json = json_decode(file_get_contents($file), true);
-
-	if ($json == null) {
-		throw new Exception("$file contains invalid JSON.");
-	}
-
-	return $json;
+	return json_decode(file_get_contents($file), true);
 }
 
 /**
@@ -61,7 +55,10 @@ function wpbb_get_block_types()
 				}
 
 				foreach (glob($path . '/fields/*.json') as $file) {
-					$data['fields'][] = wpbb_json($file);
+					$json = wpbb_json($file);
+					if (empty($json) === false) {
+						$data['fields'][] = $json;
+					}
 				}
 
 				$_block_types_cache[] = $data;
@@ -115,6 +112,15 @@ function wpbb_get_content_types()
 function wpbb_get_blocks($stack_id)
 {
 	return get_post_meta($stack_id, '_wpbb_blocks', true);
+}
+
+/**
+ * @function wpbb_clear_blocks
+ * @since 1.0.1
+ */
+function wpbb_clear_blocks($stack_id)
+{
+	return delete_post_meta($stack_id, '_wpbb_blocks');
 }
 
 /**
@@ -259,6 +265,111 @@ function wpbb_user_has_access($page_block) {
 	$role = array_map($trim, explode(',', $role));
 
 	return count(array_intersect($role, wp_get_current_user()->roles)) > 0;
+}
+
+/**
+ * Copies a block from a page/post/... to another page/post/...
+ * @function wpbb_copy_block
+ * @since 1.0.1
+ */
+function wpbb_copy_block($source_stack_id, $source_block_id, $target_stack_id) {
+
+	global $wpdb;
+
+	$source_page_blocks = wpbb_get_blocks($source_stack_id);
+	$target_page_blocks = wpbb_get_blocks($target_stack_id);
+
+	if ($source_page_blocks == null) $source_page_blocks = array();
+	if ($target_page_blocks == null) $target_page_blocks = array();
+
+	foreach ($source_page_blocks as $i => $source_page_block) {
+
+		if ($source_page_block['block_id'] == $source_block_id) {
+
+			$source_page_block['stack_id'] = $target_stack_id;
+			$source_page_block['super_id'] = 0;
+			$source_page_block['space_id'] = 0;
+
+			$post = get_post($source_page_block['block_id']);
+
+			$args = array(
+				'post_content'   => $post->post_content,
+				'post_excerpt'   => $post->post_excerpt,
+				'post_name'      => $post->post_name,
+				'post_parent'    => $post->post_parent,
+				'post_password'  => $post->post_password,
+				'post_status'    => $post->post_status,
+				'post_title'     => $post->post_title,
+				'post_type'      => $post->post_type,
+			);
+
+			$target_block_id = wp_insert_post($args);
+
+			$source_metas = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$source_block_id");
+
+			if (count($source_metas)) {
+
+				$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
+
+				foreach ($source_metas as $source_meta) {
+
+					$key = $source_meta->meta_key;
+					$val = $source_meta->meta_value;
+					$val = addslashes($val);
+
+					$sql_query_sel[] = "SELECT $target_block_id, '$key', '$val'";
+				}
+
+				$sql_query .= implode(" UNION ALL ", $sql_query_sel);
+
+				$wpdb->query($sql_query);
+			}
+
+			$source_page_block['block_id'] = $target_block_id;
+
+			$target_page_blocks[] = $source_page_block;
+
+			break;
+		}
+	}
+
+	update_post_meta($target_stack_id, '_wpbb_blocks', $target_page_blocks);
+}
+
+/**
+ * Moves a block from a page/post/... to another page/post/...
+ * @function wpbb_move_block
+ * @since 1.0.1
+ */
+function wpbb_move_block($source_stack_id, $source_block_id, $target_stack_id) {
+
+	$source_page_blocks = wpbb_get_blocks($source_stack_id);
+	$target_page_blocks = wpbb_get_blocks($target_stack_id);
+
+	if ($source_page_blocks == null) $source_page_blocks = array();
+	if ($target_page_blocks == null) $target_page_blocks = array();
+
+	foreach ($source_page_blocks as $i => $source_page_block) {
+
+		if ($source_page_block['block_id'] == $source_block_id) {
+
+			$source_page_block['stack_id'] = $target_stack_id;
+			$source_page_block['super_id'] = 0;
+			$source_page_block['space_id'] = 0;
+
+			$target_page_blocks[  ] = $source_page_block;
+			$source_page_blocks[$i] = null;
+
+			break;
+		}
+	}
+
+	$source_page_blocks = array_filter($source_page_blocks, function($item) {
+		return !!$item;
+	});
+
+	update_post_meta($source_stack_id, '_wpbb_blocks', $source_page_blocks);
+	update_post_meta($target_stack_id, '_wpbb_blocks', $target_page_blocks);
 }
 
 //------------------------------------------------------------------------------

@@ -3,12 +3,13 @@
 Plugin Name: WP Blocks Builder
 Plugin URI: http://logaritm.ca
 Description: Creates pages using multiple blocks.
-Version: 1.0.0
+Version: 1.0.1
 Author: Jean-Philippe Dery (jean-philippe.dery@logaritm.ca)
 Author URI: http://logaritm.ca
 License: MIT
 Copyright: Jean-Philippe Dery
 Mention: JBLP (jblp.ca)
+Text Domain: wp-blocks-builder
 */
 
 require_once ABSPATH . 'wp-admin/includes/file.php';
@@ -25,20 +26,20 @@ require_once __DIR__ . '/lib/functions.php';
 //------------------------------------------------------------------------------
 
 $labels = array(
-	'name'               => _x('Page Blocks', 'post type general name', 'your-plugin-textdomain' ),
-	'singular_name'      => _x('Page Block', 'post type singular name', 'your-plugin-textdomain' ),
-	'menu_name'          => _x('Page Blocks', 'admin menu', 'your-plugin-textdomain' ),
-	'name_admin_bar'     => _x('Page Block', 'add new on admin bar', 'your-plugin-textdomain' ),
-	'add_new'            => _x('Add New', 'book', 'your-plugin-textdomain' ),
-	'add_new_item'       => __('Add New Page Block', 'your-plugin-textdomain' ),
-	'new_item'           => __('New Page Block', 'your-plugin-textdomain' ),
-	'edit_item'          => __('Edit Page Block', 'your-plugin-textdomain' ),
-	'view_item'          => __('View Page Block', 'your-plugin-textdomain' ),
-	'all_items'          => __('All Page Blocks', 'your-plugin-textdomain' ),
-	'search_items'       => __('Search Page Blocks', 'your-plugin-textdomain' ),
-	'parent_item_colon'  => __('Parent Page Blocks:', 'your-plugin-textdomain' ),
-	'not_found'          => __('No page blocks found.', 'your-plugin-textdomain' ),
-	'not_found_in_trash' => __('No page block found in Trash.', 'your-plugin-textdomain' )
+	'name'               => _x('Page Blocks', 'post type general name', 'wp-blocks-builder'),
+	'singular_name'      => _x('Page Block', 'post type singular name', 'wp-blocks-builder'),
+	'menu_name'          => _x('Page Blocks', 'admin menu', 'wp-blocks-builder'),
+	'name_admin_bar'     => _x('Page Block', 'add new on admin bar', 'wp-blocks-builder'),
+	'add_new'            => _x('Add New', 'Block', 'wp-blocks-builder'),
+	'add_new_item'       => __('Add New Page Block', 'wp-blocks-builder'),
+	'new_item'           => __('New Page Block', 'wp-blocks-builder'),
+	'edit_item'          => __('Edit Page Block', 'wp-blocks-builder'),
+	'view_item'          => __('View Page Block', 'wp-blocks-builder'),
+	'all_items'          => __('All Page Blocks', 'wp-blocks-builder'),
+	'search_items'       => __('Search Page Blocks', 'wp-blocks-builder'),
+	'parent_item_colon'  => __('Parent Page Blocks:', 'wp-blocks-builder'),
+	'not_found'          => __('No page blocks found.', 'wp-blocks-builder'),
+	'not_found_in_trash' => __('No page block found in Trash.', 'wp-blocks-builder')
 );
 
 register_post_type('wpbb-block', array(
@@ -93,6 +94,14 @@ add_action('init', function() {
 });
 
 /**
+ * @action plugins_loaded
+ * @since 1.0.0
+ */
+add_action('plugins_loaded', function() {
+	load_plugin_textdomain('wp-blocks-builder', false, basename(dirname(__FILE__)) . '/languages');
+});
+
+/**
  * @action admin_init
  * @since 1.0.0
  */
@@ -105,13 +114,13 @@ add_action('admin_init', function() {
 	 */
 	add_meta_box('wpbb_disabled_editor', 'Page', function() {
 
-		echo 'The post editor has been disabled because this page contains blocks.';
+		echo __('The post editor has been disabled because this page contains blocks.', 'wp-blocks-builder');
 
 	}, 'page', 'normal', 'high');
 
 	foreach (wpbb_get_content_types() as $post_type) {
 
-		$title = apply_filters('wpbb/metabox_title', 'Blocks', $post_type);
+		$title = apply_filters('wpbb/metabox_title', __('Blocks', 'wp-blocks-builder'), $post_type);
 		$priority = apply_filters('wpbb/metabox_priority', 'low', $post_type);
 
 		add_meta_box('wpbb_metabox', $title, function() {
@@ -146,7 +155,7 @@ add_action('admin_init', function() {
 				'offset'           => 0,
 				'post_type'        => get_post_type(),
 				'post_status'      => 'any',
-				'suppress_filters' => true 
+				'suppress_filters' => true
 			));
 
 			$targets = '';
@@ -257,7 +266,7 @@ add_filter('gettext', function($translation, $text) {
 	if (get_post_type() == 'wpbb-block') {
 		switch ($text) {
 			case 'Publish':
-				return 'Save';
+				return __('Save', 'wp-blocks-builder');
 		}
 	}
 
@@ -490,33 +499,8 @@ add_action('wp_ajax_move_block', function() {
 	$source_block_id = $_POST['source_block_id'];
 	$target_stack_id = $_POST['target_stack_id'];
 
-	$source_page_blocks = wpbb_get_blocks($source_stack_id);
-	$target_page_blocks = wpbb_get_blocks($target_stack_id);
+	wpbb_move_block($source_stack_id, $source_block_id, $target_stack_id);
 
-	if ($source_page_blocks == null) $source_page_blocks = array();
-	if ($target_page_blocks == null) $target_page_blocks = array();
-
-	foreach ($source_page_blocks as $i => $source_page_block) {
-
-		if ($source_page_block['block_id'] == $source_block_id) {
-
-			$source_page_block['stack_id'] = $target_stack_id;
-			$source_page_block['super_id'] = 0;
-			$source_page_block['space_id'] = 0;
-
-			$target_page_blocks[  ] = $source_page_block;
-			$source_page_blocks[$i] = null;
-
-			break;
-		}
-	}
-
-	$source_page_blocks = array_filter($source_page_blocks, function($item) {
-		return !!$item;
-	});
-
-	update_post_meta($source_stack_id, '_wpbb_blocks', $source_page_blocks);
-	update_post_meta($target_stack_id, '_wpbb_blocks', $target_page_blocks);
 	exit;
 });
 
@@ -527,70 +511,12 @@ add_action('wp_ajax_move_block', function() {
  */
 add_action('wp_ajax_copy_block', function() {
 
-	global $wpdb;
-
 	$source_stack_id = $_POST['source_stack_id'];
 	$source_block_id = $_POST['source_block_id'];
 	$target_stack_id = $_POST['target_stack_id'];
 
-	$source_page_blocks = wpbb_get_blocks($source_stack_id);
-	$target_page_blocks = wpbb_get_blocks($target_stack_id);
+	wpbb_copy_block($source_stack_id, $source_block_id, $target_stack_id);
 
-	if ($source_page_blocks == null) $source_page_blocks = array();
-	if ($target_page_blocks == null) $target_page_blocks = array();
-
-	foreach ($source_page_blocks as $i => $source_page_block) {
-
-		if ($source_page_block['block_id'] == $source_block_id) {
-
-			$source_page_block['stack_id'] = $target_stack_id;
-			$source_page_block['super_id'] = 0;
-			$source_page_block['space_id'] = 0;
-
-			$post = get_post($source_page_block['block_id']);
-
-			$args = array(
-				'post_content'   => $post->post_content,
-				'post_excerpt'   => $post->post_excerpt,
-				'post_name'      => $post->post_name,
-				'post_parent'    => $post->post_parent,
-				'post_password'  => $post->post_password,
-				'post_status'    => $post->post_status,
-				'post_title'     => $post->post_title,
-				'post_type'      => $post->post_type,
-			);
-
-			$target_block_id = wp_insert_post($args);
-
-			$source_metas = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$source_block_id");
-
-			if (count($source_metas)) {
-
-				$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
-
-				foreach ($source_metas as $source_meta) {
-
-					$key = $source_meta->meta_key;
-					$val = $source_meta->meta_value;
-					$val = addslashes($val);
-
-					$sql_query_sel[] = "SELECT $target_block_id, '$key', '$val'";
-				}
-
-				$sql_query .= implode(" UNION ALL ", $sql_query_sel);
-
-				$wpdb->query($sql_query);
-			}
-
-			$source_page_block['block_id'] = $target_block_id;
-
-			$target_page_blocks[] = $source_page_block;
-
-			break;
-		}
-	}
-
-	update_post_meta($target_stack_id, '_wpbb_blocks', $target_page_blocks);
 	exit;
 });
 
@@ -733,3 +659,41 @@ add_filter('acf/get_field_groups', function($field_groups) {
 
 	return $field_groups;
 });
+
+//------------------------------------------------------------------------------
+// WPML
+//------------------------------------------------------------------------------
+
+/**
+ * Called when WPML duplicates a page.
+ * @action icl_make_duplicate
+ * @since 1.0.1
+ */
+add_action('icl_make_duplicate', function($source_stack_id, $lang, $post_data, $target_stack_id) {
+
+	wpbb_clear_blocks($target_stack_id);
+
+	$blocks_data = wpbb_get_blocks($source_stack_id);
+
+	if ($blocks_data == null) {
+		return;
+	}
+
+	foreach ($blocks_data as $block_data) {
+		wpbb_copy_block($source_stack_id, $block_data['block_id'], $target_stack_id);
+	}
+
+	$blocks_data = wpbb_get_blocks($target_stack_id);
+
+}, 10, 4);
+
+/**
+ * Removes the Translate metabox from certain content type.
+ * @action admin_head
+ * @since 1.0.1
+ */
+add_action('admin_head', function() {
+
+	remove_meta_box('icl_div_config','wpbb-block', 'normal');
+
+}, 99);
