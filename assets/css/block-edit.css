@@ -102,3 +102,9 @@ body.loaded {
 h1 {
 	display: none;
 }
+
+.wrap h1.wp-heading-inline,
+.wrap h1.wp-heading-inline + .page-title-action,
+.wp-header-end {
+	display: none;
+}

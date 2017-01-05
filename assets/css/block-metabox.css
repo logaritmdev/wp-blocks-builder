@@ -334,16 +334,57 @@
 	height: 220px;
 }
 
-#poststuff .block-content-preview .image-container-medium img {
-	height: 220px;
-	margin-left: auto;
-	margin-right: auto;
-	width: auto;
+#poststuff .block-content-preview h1:not(:first-child),
+#poststuff .block-content-preview h2:not(:first-child),
+#poststuff .block-content-preview h3:not(:first-child),
+#poststuff .block-content-preview h4:not(:first-child),
+#poststuff .block-content-preview h5:not(:first-child) {
+	margin-top: 20px;
+}
+
+#poststuff .block-content-preview h1,
+#poststuff .block-content-preview h2,
+#poststuff .block-content-preview h3,
+#poststuff .block-content-preview h4,
+#poststuff .block-content-preview h5 {
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+#poststuff .block-content-preview h1 {
+	font-size: 28px !important;
+	font-weight: bold !important;
+
+}
+
+#poststuff .block-content-preview h2 {
+	font-size: 22px !important;
+	font-weight: bold !important;
+}
+
+#poststuff .block-content-preview h3 {
+	font-size: 18px !important;
+	font-weight: bold !important;
+}
+
+#poststuff .block-content-preview h4 {
+	font-size: 16px !important;
+	font-weight: bold !important;
+}
+
+#poststuff .block-content-preview h5 {
+	font-size: 14px !important;
+	font-weight: bold !important;
 }
 
 #poststuff .block-content-preview img {
 	display: block;
 	max-width: 100%;
+}
+
+#poststuff .block-content-preview img.fluid {
+	height: auto;
+	width: 100%;
 }
 
 .ui-sortable-placeholder {
