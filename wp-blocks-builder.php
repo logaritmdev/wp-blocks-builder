@@ -387,6 +387,11 @@ add_filter('the_content', function($content) {
 		return $content;
 	}
 
+	if (Block::get_current() != null) {
+		// Prevent rendering blocks from inside a block being rendered
+		return $content;
+	}
+
 	foreach (wpbb_get_content_types() as $post_type) {
 
 		if (get_post_type() == $post_type) {
