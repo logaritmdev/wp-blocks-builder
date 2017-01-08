@@ -3,7 +3,7 @@
 Plugin Name: WP Blocks Builder
 Plugin URI: http://logaritm.ca
 Description: Creates pages using multiple blocks.
-Version: 1.0.1
+Version: 1.0.2
 Author: Jean-Philippe Dery (jean-philippe.dery@logaritm.ca)
 Author URI: http://logaritm.ca
 License: MIT
@@ -14,7 +14,7 @@ Text Domain: wp-blocks-builder
 
 require_once ABSPATH . 'wp-admin/includes/file.php';
 
-define('WP_BLOCKS_BUILDER_VERSION', '1.0.1');
+define('WP_BLOCKS_BUILDER_VERSION', '1.0.2');
 define('WP_BLOCKS_BUILDER_PLUGIN_URL', plugins_url('/', __FILE__));
 
 require_once __DIR__ . '/Block.php';
